@@ -54,7 +54,7 @@ namespace Proviant
             var materialEqvivalence = new BinaryOperator<bool>((o1, o2) => { return o1 == o2; })
             {
                 Priority = 1,
-                Name = "materialImplecation",
+                Name = "materialEqvivalence",
                 AlternativeNames = new List<string> { "materialeqvivalence", "⇔" }
             };
 
@@ -75,6 +75,11 @@ namespace Proviant
             Operators.Add(bracket.Name, bracket);
             #endregion
 
+        }
+
+        public Dictionary<string, bool> GenerateTruthTable()
+        {
+            throw new NotImplementedException();
         }
 
         public override bool Convert(string value) =>  System.Convert.ToBoolean(value);

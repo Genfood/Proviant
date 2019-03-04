@@ -22,9 +22,9 @@ namespace Proviant
         public T DefaultValue { get; set; }
         #endregion
 
-        public string ToPostfix(string normalizedInfixExpression)
+        public string ToPostfix()
         {
-            if (String.IsNullOrWhiteSpace(normalizedInfixExpression))
+            if (String.IsNullOrWhiteSpace(this.ExpressionString))
             {
                 return String.Empty;
             }
@@ -33,7 +33,7 @@ namespace Proviant
 
 
             List<string> postfixList = new List<string>();
-            foreach (string token in normalizedInfixExpression.Split(' '))
+            foreach (string token in this.ExpressionString.Split(' '))
             {
                 if (alphabet.Contains(token.ToUpper()) || bool.TryParse(token, out bool n))
                 {
@@ -68,29 +68,29 @@ namespace Proviant
                 postfixList.Add(opStack.Pop());
             }
 
-            return String.Join(" ", postfixList);
+            ExpressionString = String.Join(" ", postfixList);
+            return ExpressionString;
         }
 
-        public T EvaluatePostfix(string postfixExpression)
+        public T EvaluatePostfix()
         {
-            if (String.IsNullOrWhiteSpace(postfixExpression))
+            if (String.IsNullOrWhiteSpace(this.ExpressionString))
             {
                 return DefaultValue;
             }
 
             Stack<T> operandStack = new Stack<T>();
 
-            foreach (string token in postfixExpression.Split(' '))
+            foreach (string token in this.ExpressionString.Split(' '))
             {
-                var o = Operators[token];
                 if (TryParse(token, out T n))
                 {
                     operandStack.Push(Convert(token));
                 }
-                else if (o.GetType() == typeof(UnaryOperator<T>))
+                else if (Operators[token].GetType() == typeof(UnaryOperator<T>))
                 {
                     T operand1 = operandStack.Pop();
-                    T result = ((UnaryOperator<T>)o).Calculate(operand1);
+                    T result = ((UnaryOperator<T>)Operators[token]).Calculate(operand1);
 
                     operandStack.Push(result);
                 }
@@ -98,7 +98,7 @@ namespace Proviant
                 {
                     T operand2 = operandStack.Pop();
                     T operand1 = operandStack.Pop();
-                    T result = ((BinaryOperator<T>)o).Calculate(operand1, operand2);
+                    T result = ((BinaryOperator<T>)Operators[token]).Calculate(operand1, operand2);
 
                     operandStack.Push(result);
                 }
@@ -111,9 +111,9 @@ namespace Proviant
         /// </summary>
         /// <returns>The normalized expression.</returns>
         /// <param name="infixExpression">Expression.</param>
-        public string NormalizeExpression(string infixExpression)
+        public string NormalizeExpression()
         {
-            var sb = new StringBuilder(infixExpression);
+            var sb = new StringBuilder(this.ExpressionString);
 
             foreach (var o in Operators)
             {
@@ -123,7 +123,15 @@ namespace Proviant
                 }
             }
 
-            return sb.ToString();
+            ExpressionString = sb.ToString();
+            return ExpressionString;
+        }
+
+        public T Evaluate()
+        {
+            NormalizeExpression();
+            ToPostfix();
+            return EvaluatePostfix();
         }
 
         public abstract bool TryParse(string value, out T result);

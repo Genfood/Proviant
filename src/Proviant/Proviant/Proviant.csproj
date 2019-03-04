@@ -2,6 +2,25 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackOnBuild>true</PackOnBuild>
+    <Authors>Florian Hördt</Authors>
+    <Owners>Florian Hördt</Owners>
+    <PackageProjectUrl>https://github.com/Genfood/boolean-algebra-shunting-yard</PackageProjectUrl>
+    <Summary>Expression evaluation.</Summary>
+    <PackageTags>algebra</PackageTags>
+    <Title>Proviant</Title>
+    <PackageVersion>1.0.0.0</PackageVersion>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageLicenseUrl>https://github.com/Genfood/boolean-algebra-shunting-yard</PackageLicenseUrl>
+    <PackageReleaseNotes>init</PackageReleaseNotes>
+    <Description>Expression evaluation.</Description>
+    <PackageId>Proviant</PackageId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="NuGet.Build.Packaging" Version="0.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove=".nuspec" />
+  </ItemGroup>
 </Project>
