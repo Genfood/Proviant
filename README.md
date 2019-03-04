@@ -1,5 +1,6 @@
-# Calculate Boolean-algebra with the Shunting-yard algorithm
+# Calculate Boolean-algebra with the Shunting-yard algorithm [![Build Status](https://travis-ci.com/Genfood/boolean-algebra-shunting-yard.svg?branch=master)](https://travis-ci.com/Genfood/boolean-algebra-shunting-yard)
 Generatin a truth table for a boolean expression under the help of the Shunting-yard algorithm
+
 
 ## Supported opertaors
 
