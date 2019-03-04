@@ -6,7 +6,7 @@ Generatin a truth table for a boolean expression under the help of the Shunting-
 
 | operatorname | symbol | precedence | unary |
 | --- | --- | --- | --- |
-| NOT | ￢ | 4 | true |
+| NOT | ￢ | 5 | true |
 | AND | ∧ | 3 | false |
 | NAND | ⊼ | 3 | false |
 | OR | ∨ | 2 | false |
