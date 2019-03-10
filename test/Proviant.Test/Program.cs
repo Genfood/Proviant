@@ -12,9 +12,11 @@ namespace Proviant.Test
                 var expr = new BooleanAlgebraExpression(s);
                 //string normalized = expr.NormalizeExpression();
                 //string postfix = expr.ToPostfix();
-                Console.WriteLine($"Ergebniss: {expr.Evaluate()}" );
-                s = Console.ReadLine();
+                //Console.WriteLine($"Ergebniss: {expr.Evaluate()}" );
 
+                var table = expr.GenerateTruthTable();
+
+                s = Console.ReadLine();
             } while (!String.IsNullOrWhiteSpace(s));
 
         }
