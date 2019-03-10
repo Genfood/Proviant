@@ -17,14 +17,17 @@ namespace Proviant
         #region properties
         public string ExpressionString { get; set; }
 
-        static string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        protected string normalizedExpression;
+        protected string postfixExpression;
+
+        static protected string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         public Dictionary<string, Operator<T>> Operators { get; set; }
         public T DefaultValue { get; set; }
         #endregion
 
         public string ToPostfix()
         {
-            if (String.IsNullOrWhiteSpace(this.ExpressionString))
+            if (String.IsNullOrWhiteSpace(this.normalizedExpression))
             {
                 return String.Empty;
             }
@@ -33,7 +36,7 @@ namespace Proviant
 
 
             List<string> postfixList = new List<string>();
-            foreach (string token in this.ExpressionString.Split(' '))
+            foreach (string token in this.normalizedExpression.Split(' '))
             {
                 if (alphabet.Contains(token.ToUpper()) || bool.TryParse(token, out bool n))
                 {
@@ -68,20 +71,25 @@ namespace Proviant
                 postfixList.Add(opStack.Pop());
             }
 
-            ExpressionString = String.Join(" ", postfixList);
-            return ExpressionString;
+            postfixExpression = String.Join(" ", postfixList);
+            return postfixExpression;
         }
 
         public T EvaluatePostfix()
         {
-            if (String.IsNullOrWhiteSpace(this.ExpressionString))
+            return evaluatePostfix(postfixExpression);
+        }
+
+        protected T evaluatePostfix(string postfixExpression)
+        {
+            if (String.IsNullOrWhiteSpace(postfixExpression))
             {
                 return DefaultValue;
             }
 
             Stack<T> operandStack = new Stack<T>();
 
-            foreach (string token in this.ExpressionString.Split(' '))
+            foreach (string token in postfixExpression.Split(' '))
             {
                 if (TryParse(token, out T n))
                 {
@@ -113,7 +121,7 @@ namespace Proviant
         /// <param name="infixExpression">Expression.</param>
         public string NormalizeExpression()
         {
-            var sb = new StringBuilder(this.ExpressionString);
+            var sb = new StringBuilder(ExpressionString);
 
             foreach (var o in Operators)
             {
@@ -123,8 +131,8 @@ namespace Proviant
                 }
             }
 
-            ExpressionString = sb.ToString();
-            return ExpressionString;
+            normalizedExpression = sb.ToString();
+            return normalizedExpression;
         }
 
         public T Evaluate()

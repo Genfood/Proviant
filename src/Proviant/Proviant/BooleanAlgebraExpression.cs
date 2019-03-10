@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Proviant
 {
-    public class BooleanAlgebraExpression: Expression<bool>
+    public class BooleanAlgebraExpression : Expression<bool>
     {
-        public BooleanAlgebraExpression(string expressionString) 
+        public BooleanAlgebraExpression(string expressionString)
             : base(expressionString)
         {
             #region
             var not = new UnaryOperator<bool>((o) => { return !o; })
             {
-                 Priority = 5,
-                 Name = "not",
-                 AlternativeNames = new List<string> { "NOT", "!", "¬", " ̃" }
+                Priority = 5,
+                Name = "not",
+                AlternativeNames = new List<string> { "NOT", "!", "¬", " ̃" }
             };
 
             var and = new BinaryOperator<bool>((o1, o2) => { return o1 && o2; })
