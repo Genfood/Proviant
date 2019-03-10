@@ -17,14 +17,17 @@ namespace Proviant
         #region properties
         public string ExpressionString { get; set; }
 
-        static string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        protected string normalizedExpression;
+        protected string postfixExpression;
+
+        static protected string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         public Dictionary<string, Operator<T>> Operators { get; set; }
         public T DefaultValue { get; set; }
         #endregion
 
-        public string ToPostfix(string normalizedInfixExpression)
+        public string ToPostfix()
         {
-            if (String.IsNullOrWhiteSpace(normalizedInfixExpression))
+            if (String.IsNullOrWhiteSpace(this.normalizedExpression))
             {
                 return String.Empty;
             }
@@ -33,7 +36,7 @@ namespace Proviant
 
 
             List<string> postfixList = new List<string>();
-            foreach (string token in normalizedInfixExpression.Split(' '))
+            foreach (string token in this.normalizedExpression.Split(' '))
             {
                 if (alphabet.Contains(token.ToUpper()) || bool.TryParse(token, out bool n))
                 {
@@ -68,10 +71,16 @@ namespace Proviant
                 postfixList.Add(opStack.Pop());
             }
 
-            return String.Join(" ", postfixList);
+            postfixExpression = String.Join(" ", postfixList);
+            return postfixExpression;
         }
 
-        public T EvaluatePostfix(string postfixExpression)
+        public T EvaluatePostfix()
+        {
+            return evaluatePostfix(postfixExpression);
+        }
+
+        protected T evaluatePostfix(string postfixExpression)
         {
             if (String.IsNullOrWhiteSpace(postfixExpression))
             {
@@ -82,15 +91,14 @@ namespace Proviant
 
             foreach (string token in postfixExpression.Split(' '))
             {
-                var o = Operators[token];
                 if (TryParse(token, out T n))
                 {
                     operandStack.Push(Convert(token));
                 }
-                else if (o.GetType() == typeof(UnaryOperator<T>))
+                else if (Operators[token].GetType() == typeof(UnaryOperator<T>))
                 {
                     T operand1 = operandStack.Pop();
-                    T result = ((UnaryOperator<T>)o).Calculate(operand1);
+                    T result = ((UnaryOperator<T>)Operators[token]).Calculate(operand1);
 
                     operandStack.Push(result);
                 }
@@ -98,7 +106,7 @@ namespace Proviant
                 {
                     T operand2 = operandStack.Pop();
                     T operand1 = operandStack.Pop();
-                    T result = ((BinaryOperator<T>)o).Calculate(operand1, operand2);
+                    T result = ((BinaryOperator<T>)Operators[token]).Calculate(operand1, operand2);
 
                     operandStack.Push(result);
                 }
@@ -111,9 +119,9 @@ namespace Proviant
         /// </summary>
         /// <returns>The normalized expression.</returns>
         /// <param name="infixExpression">Expression.</param>
-        public string NormalizeExpression(string infixExpression)
+        public string NormalizeExpression()
         {
-            var sb = new StringBuilder(infixExpression);
+            var sb = new StringBuilder(ExpressionString);
 
             foreach (var o in Operators)
             {
@@ -123,7 +131,15 @@ namespace Proviant
                 }
             }
 
-            return sb.ToString();
+            normalizedExpression = sb.ToString();
+            return normalizedExpression;
+        }
+
+        public T Evaluate()
+        {
+            NormalizeExpression();
+            ToPostfix();
+            return EvaluatePostfix();
         }
 
         public abstract bool TryParse(string value, out T result);
