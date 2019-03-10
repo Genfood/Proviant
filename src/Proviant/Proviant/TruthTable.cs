@@ -12,6 +12,7 @@ namespace Proviant
 
         #region properties
         public List<TruthRow> TruthRows { get; set; }
+
         public int Colums
         {
             get
@@ -25,6 +26,14 @@ namespace Proviant
                 }
 
                 return 0;
+            }
+        }
+
+        public int Rows
+        {
+            get
+            {
+                return TruthRows.Count;
             }
         }
         #endregion
