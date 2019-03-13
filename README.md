@@ -11,11 +11,11 @@ Proviant is a framework which evaluate boolean-expressions under the help of the
 | Operatorname | Symbol | Precedence | Is unary |
 | --- | --- | --- | --- |
 | NOT | ￢ | 5 | true |
-| AND | ∧ | 3 | false |
-| NAND | ⊼ | 3 | false |
-| OR | ∨ | 2 | false |
-| NOR | ⊽ | 2 | false |
-| Material Implecation | → | 1 | false |
+| AND | ∧ | 4 | false |
+| NAND | ⊼ | 4 | false |
+| OR | ∨ | 3 | false |
+| NOR | ⊽ | 3 | false |
+| Material Implecation | → | 2 | false |
 | Material Eqvivalence | ⇔ | 1 | false |
 
 ## Usage
