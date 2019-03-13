@@ -53,6 +53,23 @@ var expr = new BooleanAlgebraExpression(expressionString);
 var truthTable = expr.GenerateTruthTable();
 ```
 
+The truth-table would look like:
+
+| A | B | C | Y |
+| --- | --- | --- | --- |
+| 0 | 0 | 0 | **0** |
+| 0 | 0 | 1 | **0** |
+| 0 | 1 | 0 | **0** |
+| 0 | 1 | 1 | **1** |
+| 1 | 0 | 0 | **1** |
+| 1 | 0 | 1 | **1** |
+| 1 | 1 | 0 | **1** |
+| 1 | 1 | 1 | **1** |
+
+1 = True  
+0 = False  
+**Y** = represents the evaluated result
+
 ##### TruthTable class documentation
 
 | Property | Type | Description |
