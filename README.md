@@ -57,14 +57,13 @@ var truthTable = expr.GenerateTruthTable();
 
 | Property | Type | Description |
 | --- | --- | --- |
-| `TruthRows` | `TruthRows` | A truth row contains the state of each variable and the calculated result. |
-| ```Rows``` | The total count of rows in this truth-table. |
-| ```Colums``` | The total count of colums in this truth-table. |
+| `TruthRows` | [`TruthRows`](# truthrow-class-documentation) | A truth row contains the state of each variable and the calculated result. |
+| `Rows` | `int` | The total count of rows in this truth-table. |
+| `Colums` | `int`|  The total count of colums in this truth-table. |
 
 ##### TruthRow class documentation
 
-| Property | Description |
-| --- | --- |
-| `TruthRow` ```TruthRows``` | A truth row contains the state of each variable and the calculated result. |
-| ```Rows``` | The total count of rows in this truth-table. |
-| ```Colums``` | The total count of colums in this truth-table. |
+| Property | Type | Description |
+| --- | --- | --- |
+| `Operands` | `Dictionary<string, bool>` | A dictionary of operand and it's current state. The key is the operand. The value represents the state of the operand.  |
+| `EvaluatedResult` | `bool` | The evaluated result. |
