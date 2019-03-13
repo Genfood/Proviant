@@ -3,20 +3,25 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackOnBuild>true</PackOnBuild>
-    <Authors>Florian Hördt</Authors>
-    <Owners>Florian Hördt</Owners>
+    <Authors>genfood</Authors>
+    <Owners>genfood</Owners>
     <PackageProjectUrl>https://github.com/Genfood/boolean-algebra-shunting-yard</PackageProjectUrl>
     <Summary>Expression evaluation.</Summary>
-    <PackageTags>algebra</PackageTags>
+    <PackageTags>boolean algebra expression evaluation </PackageTags>
     <Title>Proviant</Title>
-    <PackageVersion>1.0.0.0</PackageVersion>
+    <PackageVersion>1.0.0</PackageVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseUrl>https://github.com/Genfood/boolean-algebra-shunting-yard</PackageLicenseUrl>
-    <PackageReleaseNotes>init</PackageReleaseNotes>
+    <PackageReleaseNotes>init release</PackageReleaseNotes>
     <Description>Expression evaluation.</Description>
     <PackageId>Proviant</PackageId>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType></DebugType>
+    <DocumentationFile>bin\Release\netstandard2.0\Proviant.xml</DocumentationFile>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="NuGet.Build.Packaging" Version="0.2.0" />
   </ItemGroup>

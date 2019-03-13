@@ -86,7 +86,7 @@ namespace Proviant
 
             NormalizeExpression();
             ToPostfix();
-            var postfix = postfixExpression;
+            var postfix = PostfixExpression;
 
             // Search for all variables in the postfix expression.
             foreach (var t in postfix.Split(' '))

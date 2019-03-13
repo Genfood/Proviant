@@ -17,8 +17,8 @@ namespace Proviant
         #region properties
         public string ExpressionString { get; set; }
 
-        protected string normalizedExpression;
-        protected string postfixExpression;
+        public string NormalizedExpression;
+        public string PostfixExpression;
 
         static protected string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         public Dictionary<string, Operator<T>> Operators { get; set; }
@@ -27,7 +27,7 @@ namespace Proviant
 
         public string ToPostfix()
         {
-            if (String.IsNullOrWhiteSpace(this.normalizedExpression))
+            if (String.IsNullOrWhiteSpace(this.NormalizedExpression))
             {
                 return String.Empty;
             }
@@ -36,7 +36,7 @@ namespace Proviant
 
 
             List<string> postfixList = new List<string>();
-            foreach (string token in this.normalizedExpression.Split(' '))
+            foreach (string token in this.NormalizedExpression.Split(' '))
             {
                 if (alphabet.Contains(token.ToUpper()) || bool.TryParse(token, out bool n))
                 {
@@ -71,13 +71,13 @@ namespace Proviant
                 postfixList.Add(opStack.Pop());
             }
 
-            postfixExpression = String.Join(" ", postfixList);
-            return postfixExpression;
+            PostfixExpression = String.Join(" ", postfixList);
+            return PostfixExpression;
         }
 
         public T EvaluatePostfix()
         {
-            return evaluatePostfix(postfixExpression);
+            return evaluatePostfix(PostfixExpression);
         }
 
         protected T evaluatePostfix(string postfixExpression)
@@ -131,10 +131,14 @@ namespace Proviant
                 }
             }
 
-            normalizedExpression = sb.ToString();
-            return normalizedExpression;
+            NormalizedExpression = sb.ToString();
+            return NormalizedExpression;
         }
 
+        /// <summary>
+        /// Evaluate the Expression.
+        /// </summary>
+        /// <returns>The evaluation result.</returns>
         public T Evaluate()
         {
             NormalizeExpression();
