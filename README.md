@@ -57,7 +57,7 @@ var truthTable = expr.GenerateTruthTable();
 
 | Property | Type | Description |
 | --- | --- | --- |
-| `TruthRows` | [`TruthRows`](# truthrow-class-documentation) | A truth row contains the state of each variable and the calculated result. |
+| `TruthRows` | [`TruthRows`](#truthrow-class-documentation) | A truth row contains the state of each variable and the calculated result. |
 | `Rows` | `int` | The total count of rows in this truth-table. |
 | `Colums` | `int`|  The total count of colums in this truth-table. |
 
