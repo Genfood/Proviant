@@ -1,14 +1,62 @@
-# Calculate Boolean-algebra with the Shunting-yard algorithm [![Build Status](https://travis-ci.com/Genfood/boolean-algebra-shunting-yard.svg?branch=master)](https://travis-ci.com/Genfood/boolean-algebra-shunting-yard)
-Generatin a truth table for a boolean expression under the help of the Shunting-yard algorithm
+# Proviant [![Build Status](https://travis-ci.com/Genfood/boolean-algebra-shunting-yard.svg?branch=master)](https://travis-ci.com/Genfood/boolean-algebra-shunting-yard) [![Nuget](https://img.shields.io/nuget/v/Proviant.svg)](https://www.nuget.org/packages/Proviant/)
+Proviant is a framework which evaluate boolean-expressions under the help of the Shunting-yard algorithm.
 
+## Features
+* Calculating boolean-algebra expressio
+* Generatin a truth table for a boolean expression
+* Create your own expression evaluator for a specific gramma.
 
 ## Supported opertaors
 
-| operatorname | symbol | precedence | unary |
+| Operatorname | Symbol | Precedence | Is unary |
 | --- | --- | --- | --- |
 | NOT | ￢ | 5 | true |
 | AND | ∧ | 3 | false |
 | NAND | ⊼ | 3 | false |
 | OR | ∨ | 2 | false |
 | NOR | ⊽ | 2 | false |
+| Material Implecation | → | 1 | false |
+| Material Eqvivalence | ⇔ | 1 | false |
 
+## Usage
+
+### Boolean Algebra
+
+#### Evaluate a common boolean expression
+
+Add `using`:
+```csharp
+using Proviant;
+```
+Til now the tokens in an expression string needs to seperated by a whitespace.
+Create a new expression:
+```csharp
+// A boolean expression.
+string expressionString = "false or true and ( false ⇔ false )";
+// Create a new BooleanAlgebraExpression instance.
+var expr = new BooleanAlgebraExpression(expressionString);
+
+// Evaluate expression.
+// Result will be true.
+bool result = expr.Evaluate();
+```
+
+#### Generating a truth-table
+
+```csharp
+// A boolean expression.
+string expressionString = "A or B and C";
+// Create a new BooleanAlgebraExpression instance.
+var expr = new BooleanAlgebraExpression(expressionString);
+
+// returns TruthTable class.
+var truthTable = expr.GenerateTruthTable();
+```
+
+##### TruthTable class documentation
+
+| Property | Description |
+| --- | --- |
+| ```TruthRows``` | A truth row contains the state of each variable and the calculated result. |
+| ```Rows``` | The total count of rows in this truth-table. |
+| ```Colums``` | The total count of colums in this truth-table. |
