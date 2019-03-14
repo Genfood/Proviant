@@ -16,6 +16,8 @@
     <Description>Expression evaluation.</Description>
     <PackageId>Proviant</PackageId>
     <SignAssembly>true</SignAssembly>
+    <RepositoryUrl>https://github.com/Genfood/boolean-algebra-shunting-yard</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
