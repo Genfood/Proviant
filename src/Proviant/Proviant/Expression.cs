@@ -4,9 +4,16 @@ using System.Text;
 
 namespace Proviant
 {
+    /// <summary>
+    /// Inherit from this class to create an expression evaluator for a specified gramma.
+    /// </summary>
     public abstract class Expression<T>
         where T:IConvertible
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:Proviant.Expression`1"/> class.
+        /// </summary>
+        /// <param name="exprssionString">Exprssion string.</param>
         public Expression(string exprssionString)
         {
             ExpressionString = exprssionString;
@@ -15,16 +22,46 @@ namespace Proviant
         }
 
         #region properties
+        /// <summary>
+        /// Gets or sets the expression string.
+        /// </summary>
+        /// <value>The expression string.</value>
         public string ExpressionString { get; set; }
 
-        public string NormalizedExpression;
-        public string PostfixExpression;
+        /// <summary>
+        /// Gets or sets the normalized expression.
+        /// </summary>
+        /// <value>The normalized expression.</value>
+        public string NormalizedExpression { get; set; }
 
+        /// <summary>
+        /// Gets or sets the postfix expression.
+        /// </summary>
+        /// <value>The postfix expression.</value>
+        public string PostfixExpression { get; set; }
+
+        /// <summary>
+        /// The alphabet.
+        /// </summary>
         static protected string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        /// <summary>
+        /// Gets or sets the operators for this expression context.
+        /// </summary>
+        /// <value>The operators.</value>
         public Dictionary<string, Operator<T>> Operators { get; set; }
+
+        /// <summary>
+        /// Gets or sets the default value.
+        /// </summary>
+        /// <value>The default value.</value>
         public T DefaultValue { get; set; }
         #endregion
 
+        /// <summary>
+        /// Converts a string to a postfix expression.
+        /// </summary>
+        /// <returns>The postfix.</returns>
         public string ToPostfix()
         {
             if (String.IsNullOrWhiteSpace(this.NormalizedExpression))
@@ -75,11 +112,20 @@ namespace Proviant
             return PostfixExpression;
         }
 
+        /// <summary>
+        /// Evaluates the postfix expression.
+        /// </summary>
+        /// <returns>The result.</returns>
         public T EvaluatePostfix()
         {
             return evaluatePostfix(PostfixExpression);
         }
 
+        /// <summary>
+        /// Evaluates the postfix expression.
+        /// </summary>
+        /// <returns>The result.</returns>
+        /// <param name="postfixExpression">Postfix expression.</param>
         protected T evaluatePostfix(string postfixExpression)
         {
             if (String.IsNullOrWhiteSpace(postfixExpression))
@@ -118,7 +164,6 @@ namespace Proviant
         /// Normalizes the expression.
         /// </summary>
         /// <returns>The normalized expression.</returns>
-        /// <param name="infixExpression">Expression.</param>
         public string NormalizeExpression()
         {
             var sb = new StringBuilder(ExpressionString);
@@ -146,8 +191,19 @@ namespace Proviant
             return EvaluatePostfix();
         }
 
+        /// <summary>
+        /// Tries the parse.
+        /// </summary>
+        /// <returns><c>true</c>, if parse was tryed, <c>false</c> otherwise.</returns>
+        /// <param name="value">Value.</param>
+        /// <param name="result">Result.</param>
         public abstract bool TryParse(string value, out T result);
 
+        /// <summary>
+        /// Convert the specified value.
+        /// </summary>
+        /// <returns>The convert.</returns>
+        /// <param name="value">Value.</param>
         public abstract T Convert(string value);
     }
 }

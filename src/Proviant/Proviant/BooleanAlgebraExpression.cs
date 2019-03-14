@@ -4,8 +4,15 @@ using System.Linq;
 
 namespace Proviant
 {
+    /// <summary>
+    /// Boolean algebra expression.
+    /// </summary>
     public class BooleanAlgebraExpression : Expression<bool>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:Proviant.BooleanAlgebraExpression"/> class.
+        /// </summary>
+        /// <param name="expressionString">Expression string.</param>
         public BooleanAlgebraExpression(string expressionString)
             : base(expressionString)
         {
@@ -78,6 +85,10 @@ namespace Proviant
 
         }
 
+        /// <summary>
+        /// Generates a truth-table with all possible results for this Expression.
+        /// </summary>
+        /// <returns>The truth table.</returns>
         public TruthTable GenerateTruthTable()
         {
             var table = new TruthTable();
@@ -147,8 +158,19 @@ namespace Proviant
             return table;
         }
 
+        /// <summary>
+        /// Convert the specified value.
+        /// </summary>
+        /// <returns>The convert.</returns>
+        /// <param name="value">Value.</param>
         public override bool Convert(string value) => System.Convert.ToBoolean(value);
 
+        /// <summary>
+        /// Tries to parse the specified value.
+        /// </summary>
+        /// <returns><c>true</c>, if parse succeeded, <c>false</c> otherwise.</returns>
+        /// <param name="value">Value.</param>
+        /// <param name="result">If set to <c>true</c> result.</param>
         public override bool TryParse(string value, out bool result) => bool.TryParse(value, out result);
     }
 }
