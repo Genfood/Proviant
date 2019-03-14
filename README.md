@@ -1,9 +1,9 @@
 # Proviant [![Build Status](https://travis-ci.com/Genfood/boolean-algebra-shunting-yard.svg?branch=master)](https://travis-ci.com/Genfood/boolean-algebra-shunting-yard) [![Nuget](https://img.shields.io/nuget/v/Proviant.svg)](https://www.nuget.org/packages/Proviant/)
-Proviant is a framework which evaluate boolean-expressions under the help of the Shunting-yard algorithm.
+Proviant is a framework which evaluate boolean-expressions with the help of the Shunting-yard algorithm.
 
 ## Features
-* Calculating boolean-algebra expressio
-* Generatin a truth table for a boolean expression
+* Calculating boolean-algebra expression
+* Generating a truth table for a boolean expression
 * Create your own expression evaluator for a specific gramma.
 
 ## Supported opertaors
@@ -28,7 +28,7 @@ Add `using`:
 ```csharp
 using Proviant;
 ```
-Til now the tokens in an expression string needs to seperated by a whitespace.
+Till now the tokens in an expression string need to be seperated by a whitespace.
 Create a new expression:
 ```csharp
 // A boolean expression.
