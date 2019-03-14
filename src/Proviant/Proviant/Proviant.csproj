@@ -9,10 +9,11 @@
     <Summary>Expression evaluation.</Summary>
     <PackageTags>boolean algebra expression evaluation </PackageTags>
     <Title>Proviant</Title>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseUrl>https://github.com/Genfood/boolean-algebra-shunting-yard</PackageLicenseUrl>
-    <PackageReleaseNotes>init release</PackageReleaseNotes>
+    <PackageReleaseNotes>- Added missing documentation.
+- Small bug fixes and improvements.</PackageReleaseNotes>
     <Description>Expression evaluation.</Description>
     <PackageId>Proviant</PackageId>
     <SignAssembly>true</SignAssembly>
