@@ -95,7 +95,7 @@ namespace Proviant
                 }
                 else
                 {
-                    while (opStack.Count != 0 && Operators[opStack.Peek()].Priority >= Operators[token].Priority)
+                    while (opStack.Count != 0 && Operators[opStack.Peek()].Priority > Operators[token].Priority)
                     {
                         postfixList.Add(opStack.Pop());
                     }

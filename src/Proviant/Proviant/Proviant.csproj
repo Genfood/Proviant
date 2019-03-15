@@ -9,12 +9,11 @@
     <Summary>Expression evaluation.</Summary>
     <PackageTags>boolean algebra expression evaluation </PackageTags>
     <Title>Proviant</Title>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>1.0.2</PackageVersion>
     <NeutralLanguage>en</NeutralLanguage>
-    <PackageLicenseUrl>https://github.com/Genfood/boolean-algebra-shunting-yard</PackageLicenseUrl>
-    <PackageReleaseNotes>- Added missing documentation.
-- Small bug fixes and improvements.</PackageReleaseNotes>
-    <Description>Expression evaluation.</Description>
+    <PackageReleaseNotes>- Fixed which caused a crash when having a double negation.
+- Improved: Added a new symbol for eqvivalent.</PackageReleaseNotes>
+    <Description>Proviant is a framework which evaluate boolean-expressions under the help of the Shunting-yard algorithm.</Description>
     <PackageId>Proviant</PackageId>
     <SignAssembly>true</SignAssembly>
     <RepositoryUrl>https://github.com/Genfood/boolean-algebra-shunting-yard</RepositoryUrl>
