@@ -63,7 +63,7 @@ namespace Proviant
             {
                 Priority = 1,
                 Name = "materialEqvivalence",
-                AlternativeNames = new List<string> { "materialeqvivalence", "⇔" }
+                AlternativeNames = new List<string> { "materialeqvivalence", "⇔", "↔" }
             };
 
             var bracket = new BinaryOperator<bool>(null)
