@@ -14,7 +14,7 @@
     <PackageLicenseUrl>https://github.com/Genfood/boolean-algebra-shunting-yard</PackageLicenseUrl>
     <PackageReleaseNotes>- Added missing documentation.
 - Small bug fixes and improvements.</PackageReleaseNotes>
-    <Description>Expression evaluation.</Description>
+    <Description>Proviant is a framework which evaluate boolean-expressions under the help of the Shunting-yard algorithm.</Description>
     <PackageId>Proviant</PackageId>
     <SignAssembly>true</SignAssembly>
     <RepositoryUrl>https://github.com/Genfood/boolean-algebra-shunting-yard</RepositoryUrl>
