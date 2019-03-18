@@ -15,9 +15,9 @@ Proviant is a framework which evaluate boolean-expressions with the help of the 
 | NAND | ⊼ | 4 | false |
 | OR | ∨ | 3 | false |
 | NOR | ⊽ | 3 | false |
-| Material Implecation | → | 2 | false |
-| Material Eqvivalence | ⇔ | 1 | false |
-| Material Antivalence | ⇹ | 1 | false |
+| Implecation | → | 2 | false |
+| Eqvivalence | ⇔ | 1 | false |
+| Antivalence | ⇹ | 1 | false |
 
 ## Usage
 
