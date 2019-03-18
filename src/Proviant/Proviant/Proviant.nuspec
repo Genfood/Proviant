@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<package>
+  <metadata>
+    <id>Proviant</id>
+    <version>1.0.3</version>
+    <title>Proviant</title>
+    <authors>genfood</authors>
+    <owners>genfood</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/Genfood/boolean-algebra-shunting-yard</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>Expression evaluation.</summary>
+    <description>Proviant is a framework which evaluate boolean-expressions under the help of the Shunting-yard algorithm.</description>
+    <releaseNotes>
+      - Exclude unused dlls from nuget file, this caused problems in some cases.
+    </releaseNotes>
+    <language>en</language>
+  </metadata>
+  <files>
+    
+  </files>
+</package>
