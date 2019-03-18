@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Proviant</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <title>Proviant</title>
     <authors>genfood</authors>
     <owners>genfood</owners>
@@ -12,7 +12,7 @@
     <summary>Expression evaluation.</summary>
     <description>Proviant is a framework which evaluate boolean-expressions under the help of the Shunting-yard algorithm.</description>
     <releaseNotes>
-      - Exclude unused dlls from nuget file, this caused problems in some cases.
+      - Added antivalence operator.
     </releaseNotes>
     <language>en</language>
   </metadata>
