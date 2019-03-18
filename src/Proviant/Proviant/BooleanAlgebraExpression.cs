@@ -66,6 +66,13 @@ namespace Proviant
                 AlternativeNames = new List<string> { "materialeqvivalence", "⇔", "↔" }
             };
 
+            var materialAntivalence = new BinaryOperator<bool>((o1, o2) => { return o1 != o2; })
+            {
+                Priority = 1,
+                Name = "materialEqvivalence",
+                AlternativeNames = new List<string> { "materialantivalence", "⇹" }
+            };
+
             var bracket = new BinaryOperator<bool>(null)
             {
                 Priority = 0,
