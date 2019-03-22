@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Proviant</id>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
     <title>Proviant</title>
     <authors>genfood</authors>
     <owners>genfood</owners>
@@ -12,9 +12,11 @@
     <summary>Expression evaluation.</summary>
     <description>Proviant is a framework which evaluate boolean-expressions under the help of the Shunting-yard algorithm.</description>
     <releaseNotes>
-      - Bug fixes.
+      - Added a logo.
     </releaseNotes>
     <language>en</language>
+    <iconUrl>https://raw.githubusercontent.com/Genfood/boolean-algebra-shunting-yard/master/logo_nuget.png</iconUrl>
+    <tags>expression evaluation calculation net standard boolean algebra shunting yard</tags>
   </metadata>
   <files>
     
