@@ -18,8 +18,8 @@ Proviant is a framework which evaluate boolean-expressions with the help of the 
 | OR | ∨ | 3 | false |
 | NOR | ⊽ | 3 | false |
 | Implecation | → | 2 | false |
-| Eqvivalence | ⇔ | 1 | false |
-| Antivalence | ↮ | 1 | false |
+| Eqvivalence | ↔ | 1 | false |
+| Antivalence | ⇹ | 1 | false |
 
 ## Usage
 
