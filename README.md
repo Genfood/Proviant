@@ -1,3 +1,5 @@
+![Banner](https://raw.githubusercontent.com/Genfood/boolean-algebra-shunting-yard/master/banner.png)
+
 # Proviant [![Build Status](https://travis-ci.com/Genfood/boolean-algebra-shunting-yard.svg?branch=master)](https://travis-ci.com/Genfood/boolean-algebra-shunting-yard) [![Nuget](https://img.shields.io/nuget/v/Proviant.svg)](https://www.nuget.org/packages/Proviant/)
 Proviant is a framework which evaluate boolean-expressions with the help of the Shunting-yard algorithm.
 
