@@ -70,7 +70,7 @@ namespace Proviant
             {
                 Priority = 1,
                 Name = "materialAntivalence",
-                AlternativeNames = new List<string> { "materialantivalence", "⇹", "↮" }
+                AlternativeNames = new List<string> { "materialantivalence", "⇹", "↮", "≠" }
             };
 
             var bracket = new BinaryOperator<bool>(null)
@@ -87,6 +87,7 @@ namespace Proviant
             Operators.Add(nor.Name, nor);
             Operators.Add(materialImplecation.Name, materialImplecation);
             Operators.Add(materialEqvivalence.Name, materialEqvivalence);
+            Operators.Add(materialAntivalence.Name, materialAntivalence);
             Operators.Add(bracket.Name, bracket);
             #endregion
 
