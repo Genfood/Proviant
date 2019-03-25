@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Proviant</id>
-    <version>1.0.8</version>
+    <version>1.1.0</version>
     <title>Proviant</title>
     <authors>genfood</authors>
     <owners>genfood</owners>
@@ -12,7 +12,8 @@
     <summary>Expression evaluation.</summary>
     <description>Proviant is a framework which evaluate boolean-expressions under the help of the Shunting-yard algorithm.</description>
     <releaseNotes>
-      - Added a logo.
+      - Added the possibility to generate the conjunctive normal form and disjunctive normal form.
+      - New logo.
     </releaseNotes>
     <language>en</language>
     <iconUrl>https://raw.githubusercontent.com/Genfood/boolean-algebra-shunting-yard/master/logo_nuget.png</iconUrl>

@@ -90,7 +90,6 @@ namespace Proviant
             Operators.Add(materialAntivalence.Name, materialAntivalence);
             Operators.Add(bracket.Name, bracket);
             #endregion
-
         }
 
         /// <summary>
@@ -110,11 +109,11 @@ namespace Proviant
             // Search for all variables in the postfix expression.
             foreach (var t in postfix.Split(' '))
             {
-                if (alphabet.Contains(t.ToUpper()))
+                if (alphabet.Contains(t.ToLower()))
                 {
-                    if (variables.Find(x => x.Key == t.ToUpper()) == null)
+                    if (variables.Find(x => x.Key == t.ToLower()) == null)
                     {
-                        variables.Add(new KeyValue(t.ToUpper()));
+                        variables.Add(new KeyValue(t.ToLower()));
                     }
                 }
             }
@@ -145,7 +144,7 @@ namespace Proviant
                 {
                     foreach (var item in variables)
                     {
-                        if (list[j].ToUpper() == item.Key)
+                        if (list[j].ToLower() == item.Key)
                         {
                             list[j] = item.Value.ToString();
                             row.Operands.Add(item.Key, item.Value);

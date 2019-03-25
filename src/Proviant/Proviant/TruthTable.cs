@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Proviant
 {
@@ -53,6 +54,70 @@ namespace Proviant
             {
                 return TruthRows.Count;
             }
+        }
+        #endregion
+
+        #region methods
+        /// <summary>
+        /// Generates the conjunctive normal form.
+        /// The disjunction of all disjunctive clauses. Result is false (0).
+        /// </summary>
+        /// <returns>The conjunctive normal form.</returns>
+        public string CNF()
+        {
+            var konList = TruthRows.Where(x => !x.EvaluatedResult).ToList();
+            List<string> maxTerms = new List<string>();
+
+            foreach (var row in konList)
+            {
+                List<string> literals = new List<string>();
+
+                foreach (var o in row.Operands)
+                {
+                    if (o.Value)
+                    {
+                       literals.Add($"¬{o.Key}");
+                    }
+                    else
+                    {
+                        literals.Add($"{o.Key}");
+                    }
+                }
+                maxTerms.Add($"({String.Join("∨", literals)})");
+            }
+
+            return String.Join("∧", maxTerms);
+        }
+
+        /// <summary>
+        /// Generates the disjunctive normal form.
+        /// The disjunction of all conjunctive clauses. Result is true (1).
+        /// </summary>
+        /// <returns></returns>
+        public string DNF()
+        {
+            var disList = TruthRows.Where(x => x.EvaluatedResult).ToList();
+            List<string> maxTerms = new List<string>();
+
+            foreach (var row in disList)
+            {
+                List<string> literals = new List<string>();
+
+                foreach (var o in row.Operands)
+                {
+                    if (!o.Value)
+                    {
+                        literals.Add($"¬{o.Key}");
+                    }
+                    else
+                    {
+                        literals.Add($"{o.Key}");
+                    }
+                }
+                maxTerms.Add($"({String.Join("∧", literals)})");
+            }
+
+            return String.Join("∨", maxTerms);
         }
         #endregion
     }
