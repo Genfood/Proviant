@@ -121,7 +121,7 @@ namespace Proviant
             // order the alphabetically.
             variables = variables.OrderBy(x => x.Key).ToList();
 
-            for (int i = 0; i < Math.Pow(variables.Count, 2); i++)
+            for (int i = 0; i < Math.Pow(2, variables.Count); i++)
             {
                 // create new row.
                 var row = new TruthRow();
