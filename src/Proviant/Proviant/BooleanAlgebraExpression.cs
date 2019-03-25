@@ -109,7 +109,7 @@ namespace Proviant
             // Search for all variables in the postfix expression.
             foreach (var t in postfix.Split(' '))
             {
-                if (alphabet.Contains(t.ToLower()))
+                if (alphabet.ToLower().Contains(t.ToLower()))
                 {
                     if (variables.Find(x => x.Key == t.ToLower()) == null)
                     {

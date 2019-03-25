@@ -75,7 +75,7 @@ namespace Proviant
             List<string> postfixList = new List<string>();
             foreach (string token in this.NormalizedExpression.Split(' '))
             {
-                if (alphabet.Contains(token.ToUpper()) || bool.TryParse(token, out bool n))
+                if (alphabet.ToLower().Contains(token.ToLower()) || bool.TryParse(token, out bool n))
                 {
                     postfixList.Add(token);
                 }
