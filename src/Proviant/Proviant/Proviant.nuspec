@@ -7,7 +7,7 @@
     <authors>genfood</authors>
     <owners>genfood</owners>
     <license type="expression">MIT</license>
-    <projectUrl>https://github.com/Genfood/boolean-algebra-shunting-yard</projectUrl>
+    <projectUrl>https://github.com/Genfood/Proviant</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <summary>Expression evaluation.</summary>
     <description>Proviant is a framework which evaluate boolean-expressions under the help of the Shunting-yard algorithm.</description>
@@ -15,7 +15,7 @@
       - Added new operator: converse implication.
     </releaseNotes>
     <language>en</language>
-    <iconUrl>https://raw.githubusercontent.com/Genfood/boolean-algebra-shunting-yard/master/logo_nuget.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/Genfood/Proviant/master/logo_nuget.png</iconUrl>
     <tags>expression evaluation calculation net standard boolean algebra shunting yard</tags>
   </metadata>
   <files>
