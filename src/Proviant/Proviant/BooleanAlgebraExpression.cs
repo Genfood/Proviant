@@ -52,11 +52,18 @@ namespace Proviant
                 AlternativeNames = new List<string> { "NOR", "⊽" }
             };
 
+            var converseImplecation = new BinaryOperator<bool>((o1, o2) => { return o1 || !o2; })
+            {
+                Priority = 2,
+                Name = "converseImplecation",
+                AlternativeNames = new List<string> { "converseImplecation", "←", "⊂", "⇐" }
+            };
+
             var materialImplecation = new BinaryOperator<bool>((o1, o2) => { return !o1 || o2; })
             {
                 Priority = 2,
                 Name = "materialImplecation",
-                AlternativeNames = new List<string> { "materialimplecation", "→", "⊃", "⇒" }
+                AlternativeNames = new List<string> { "materialImplecation", "→", "⊃", "⇒" }
             };
 
             var materialEqvivalence = new BinaryOperator<bool>((o1, o2) => { return o1 == o2; })
@@ -86,6 +93,7 @@ namespace Proviant
             Operators.Add(or.Name, or);
             Operators.Add(nor.Name, nor);
             Operators.Add(materialImplecation.Name, materialImplecation);
+            Operators.Add(converseImplecation.Name, converseImplecation);
             Operators.Add(materialEqvivalence.Name, materialEqvivalence);
             Operators.Add(materialAntivalence.Name, materialAntivalence);
             Operators.Add(bracket.Name, bracket);
