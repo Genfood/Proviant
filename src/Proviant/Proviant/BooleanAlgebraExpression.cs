@@ -114,14 +114,18 @@ namespace Proviant
             ToPostfix();
             var postfix = PostfixExpression;
 
+            // 
+            var ops = Operators.Keys.Union(new string[] { ")", "]", "}" });
+
             // Search for all variables in the postfix expression.
             foreach (var t in postfix.Split(' '))
             {
-                if (alphabet.ToLower().Contains(t.ToLower()))
+                // Check if the token isn't a operator 
+                if (!ops.Contains(t))
                 {
-                    if (variables.Find(x => x.Key == t.ToLower()) == null)
+                    if (variables.Find(x => x.Key == t) == null)
                     {
-                        variables.Add(new KeyValue(t.ToLower()));
+                        variables.Add(new KeyValue(t));
                     }
                 }
             }
@@ -152,7 +156,7 @@ namespace Proviant
                 {
                     foreach (var item in variables)
                     {
-                        if (list[j].ToLower() == item.Key)
+                        if (list[j] == item.Key)
                         {
                             list[j] = item.Value.ToString();
                             row.Operands.Add(item.Key, item.Value);

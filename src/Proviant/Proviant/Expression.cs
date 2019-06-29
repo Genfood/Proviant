@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Proviant
@@ -71,11 +72,13 @@ namespace Proviant
 
             Stack<string> opStack = new Stack<string>();
 
+            var ops = Operators.Keys.Union(new string[] { ")", "]", "}" });
 
             List<string> postfixList = new List<string>();
             foreach (string token in this.NormalizedExpression.Split(' '))
             {
-                if (alphabet.ToLower().Contains(token.ToLower()) || bool.TryParse(token, out bool n))
+                                            // TODO: remove?
+                if (!ops.Contains(token) || bool.TryParse(token, out bool n))
                 {
                     postfixList.Add(token);
                 }
@@ -166,17 +169,23 @@ namespace Proviant
         /// <returns>The normalized expression.</returns>
         public string NormalizeExpression()
         {
-            var sb = new StringBuilder(ExpressionString);
+            // Split string to list.
+            var expressionList = ExpressionString.Split(' ');
 
-            foreach (var o in Operators)
+            for (int i = 0; i < expressionList.Count(); i++)
             {
-                foreach (var name in o.Value.AlternativeNames)
+                var token = expressionList[i];
+
+                foreach (var o in Operators)
                 {
-                    sb.Replace(name, o.Value.Name);
+                    if (o.Value.AlternativeNames.Contains(token))
+                    {
+                        expressionList[i] = o.Key;
+                    }
                 }
             }
-
-            NormalizedExpression = sb.ToString();
+            
+            NormalizedExpression = String.Join(" ", expressionList);
             return NormalizedExpression;
         }
 
