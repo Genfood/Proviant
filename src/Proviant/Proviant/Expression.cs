@@ -78,7 +78,7 @@ namespace Proviant
             foreach (string token in this.NormalizedExpression.Split(' '))
             {
                                             // TODO: remove?
-                if (!ops.Contains(token) || bool.TryParse(token, out bool n))
+                if (!ops.Contains(token) || TryParse(token, out T n))
                 {
                     postfixList.Add(token);
                 }
